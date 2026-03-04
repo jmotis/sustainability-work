@@ -290,6 +290,22 @@ def clean_html_references(site_dir):
             r'\1', content
         )
 
+        # Fix YouTube embeds: add referrerpolicy to prevent Error 153
+        # YouTube requires a valid Referer header; without referrerpolicy,
+        # static sites trigger "Error 153: Video player configuration error"
+        content = re.sub(
+            r'(<iframe\s[^>]*src="https?://(?:www\.)?youtube(?:-nocookie)?\.com/embed/[^"]*"[^>]*?)(/?>)',
+            lambda m: m.group(1) + ' referrerpolicy="strict-origin-when-cross-origin"' + m.group(2)
+                if 'referrerpolicy' not in m.group(1) else m.group(0),
+            content
+        )
+
+        # Remove TinyMCE editor artifacts (bookmark spans left by WordPress WYSIWYG editor)
+        content = re.sub(
+            r'<span\s+data-mce-type="bookmark"[^>]*>\ufeff</span>',
+            '', content
+        )
+
         if content != original:
             with open(hf, 'w', encoding='utf-8') as f:
                 f.write(content)

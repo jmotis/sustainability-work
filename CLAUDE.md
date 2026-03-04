@@ -54,8 +54,17 @@ After deleting legacy files, remove the corresponding HTML tags that reference t
 - `<img ... src="...cookies-for-comments/css.php..." ...>` (Tracking pixels)
 - Author archive `<a>` tags → convert to plain text, keeping the author name
 - `file:///` local path `<a>` tags → convert to plain text
+- `<span data-mce-type="bookmark">` → remove (TinyMCE/WordPress editor artifacts)
 
-### 5. Verify Links
+### 5. Fix YouTube/iframe Embeds
+
+YouTube iframes on static sites will throw **Error 153 (Video player configuration error)** unless they have a `referrerpolicy` attribute. YouTube requires a valid Referer header to allow embedded playback; without an explicit referrer policy, browsers may not send one (especially on `file://` or static hosts), causing YouTube to reject the embed.
+
+**Fix:** Add `referrerpolicy="strict-origin-when-cross-origin"` to all YouTube `<iframe>` tags.
+
+Also remove any TinyMCE editor artifact `<span>` tags (with `data-mce-type="bookmark"`) that WordPress's WYSIWYG editor may have left inside iframe tags.
+
+### 6. Verify Links
 
 After all changes, scan every HTML file and verify all `href` and `src` attributes point to existing files. Watch specifically for:
 - `None` concatenation in URLs (the regex bug mentioned above)
