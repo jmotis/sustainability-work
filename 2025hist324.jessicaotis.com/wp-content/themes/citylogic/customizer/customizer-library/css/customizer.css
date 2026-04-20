@@ -1,0 +1,125 @@
+
+.customize-control input[type=text].pixels,
+.customize-control input[type=text].percentage,
+.customize-control input[type=text].milliseconds {
+	width: 50px;
+}
+
+.customize-control-warning,
+.customize-control-warning a {
+	color: #FF0000;
+	font-weight: 400;
+}
+
+.customize-control.hidden {
+	display: none !important;
+}
+
+#customize-theme-controls #accordion-section-colors {
+	display: none !important;
+}
+
+/* Accordion section rollover */
+#customize-theme-controls #accordion-panel-citylogic-colors h3:hover,
+	#customize-theme-controls #accordion-section-citylogic-general-colors h3:hover,
+	#customize-theme-controls #accordion-section-citylogic-site-logo-area-colors h3:hover,
+	#customize-theme-controls #accordion-section-citylogic-navigation-menu-colors h3:hover,
+	#customize-theme-controls #accordion-section-citylogic-page-content-colors h3:hover,
+	#customize-theme-controls #accordion-section-citylogic-footer-colors h3:hover,
+
+#customize-theme-controls #accordion-panel-citylogic-styling h3:hover,
+	#customize-theme-controls #accordion-section-citylogic-styling-paragraph h3:hover,
+	#customize-theme-controls #accordion-section-citylogic-styling-links h3:hover,
+	#customize-theme-controls #accordion-section-citylogic-styling-page-builders h3:hover,
+	#customize-theme-controls #accordion-section-citylogic-styling-plugins h3:hover,
+
+#customize-theme-controls #accordion-section-citylogic-layout h3:hover,
+#customize-theme-controls #accordion-section-citylogic-fonts h3:hover,
+#customize-theme-controls #accordion-section-citylogic-font-awesome h3:hover,
+
+#customize-theme-controls #accordion-panel-citylogic-header h3:hover,
+	#customize-theme-controls #accordion-section-citylogic-header-site-logo-area h3:hover,
+	#customize-theme-controls #accordion-section-citylogic-header-navigation-menu h3:hover,
+	#customize-theme-controls #accordion-section-citylogic-header-text h3:hover,
+	#customize-theme-controls #accordion-section-citylogic-header-opacity h3:hover,
+
+#customize-theme-controls #accordion-section-citylogic-social h3:hover,
+#customize-theme-controls #accordion-section-citylogic-search h3:hover,
+#customize-theme-controls #accordion-section-citylogic-slider h3:hover,
+#customize-theme-controls #accordion-section-citylogic-blog h3:hover,
+#customize-theme-controls #accordion-section-citylogic-404-page h3:hover,
+#customize-theme-controls #accordion-section-citylogic-gutenberg h3:hover,
+#customize-theme-controls #accordion-section-citylogic-media h3:hover {
+    background-color: #196290;
+	color: #FFFFFF;
+}
+
+/* Accordion arrow icon rollover */
+#customize-theme-controls #accordion-panel-citylogic-colors:hover>.accordion-section-title:after,
+	#customize-theme-controls #accordion-section-citylogic-general-colors:hover>.accordion-section-title:after,
+	#customize-theme-controls #accordion-section-citylogic-site-logo-area-colors:hover>.accordion-section-title:after,
+	#customize-theme-controls #accordion-section-citylogic-navigation-menu-colors:hover>.accordion-section-title:after,
+	#customize-theme-controls #accordion-section-citylogic-page-content-colors:hover>.accordion-section-title:after,
+	#customize-theme-controls #accordion-section-citylogic-footer-colors:hover>.accordion-section-title:after,
+
+#customize-theme-controls #accordion-panel-citylogic-styling:hover>.accordion-section-title:after,
+	#customize-theme-controls #accordion-section-citylogic-styling-paragraph:hover>.accordion-section-title:after,
+	#customize-theme-controls #accordion-section-citylogic-styling-links:hover>.accordion-section-title:after,
+	#customize-theme-controls #accordion-section-citylogic-styling-page-builders:hover>.accordion-section-title:after,
+	#customize-theme-controls #accordion-section-citylogic-styling-plugins:hover>.accordion-section-title:after,
+
+#customize-theme-controls #accordion-section-citylogic-layout:hover>.accordion-section-title:after,
+#customize-theme-controls #accordion-section-citylogic-fonts:hover>.accordion-section-title:after,
+#customize-theme-controls #accordion-section-citylogic-font-awesome:hover>.accordion-section-title:after,
+
+#customize-theme-controls #accordion-panel-citylogic-header:hover>.accordion-section-title:after,
+	#customize-theme-controls #accordion-section-citylogic-header-site-logo-area:hover>.accordion-section-title:after,
+	#customize-theme-controls #accordion-section-citylogic-header-navigation-menu:hover>.accordion-section-title:after,
+	#customize-theme-controls #accordion-section-citylogic-header-text:hover>.accordion-section-title:after,
+	#customize-theme-controls #accordion-section-citylogic-header-opacity:hover>.accordion-section-title:after,
+
+#customize-theme-controls #accordion-section-citylogic-social:hover>.accordion-section-title:after,
+#customize-theme-controls #accordion-section-citylogic-search:hover>.accordion-section-title:after,
+#customize-theme-controls #accordion-section-citylogic-slider:hover>.accordion-section-title:after,
+#customize-theme-controls #accordion-section-citylogic-blog:hover>.accordion-section-title:after,
+#customize-theme-controls #accordion-section-citylogic-404-page:hover>.accordion-section-title:after,
+#customize-theme-controls #accordion-section-citylogic-gutenberg:hover>.accordion-section-title:after,
+#customize-theme-controls #accordion-section-citylogic-media:hover>.accordion-section-title:after {
+	color: #FFFFFF !important;
+}
+
+/* Expanded Section heading colors */
+#sub-accordion-panel-citylogic-colors.control-section .panel-meta .accordion-section-title,
+	#sub-accordion-section-citylogic-general-colors.control-section.open h3,
+	#sub-accordion-section-citylogic-site-logo-area-colors.control-section.open h3,
+	#sub-accordion-section-citylogic-navigation-menu-colors.control-section.open h3,
+	#sub-accordion-section-citylogic-page-content-colors.control-section.open h3,
+	#sub-accordion-section-citylogic-footer-colors.control-section.open h3,
+
+#sub-accordion-section-citylogic-layout.control-section.open h3,
+#sub-accordion-section-citylogic-fonts.control-section.open h3,
+#sub-accordion-section-citylogic-font-awesome.control-section.open h3,
+
+#sub-accordion-panel-citylogic-styling.control-section div.accordion-section-title,
+	#sub-accordion-section-citylogic-styling-paragraph.control-section.open h3,
+	#sub-accordion-section-citylogic-styling-links.control-section.open h3,
+	#sub-accordion-section-citylogic-styling-page-builders.control-section.open h3,
+	#sub-accordion-section-citylogic-styling-plugins.control-section.open h3,
+
+#sub-accordion-panel-citylogic-header.control-section div.accordion-section-title,
+	#sub-accordion-section-citylogic-header-site-logo-area.control-section.open h3,
+	#sub-accordion-section-citylogic-header-navigation-menu.control-section.open h3,
+	#sub-accordion-section-citylogic-header-text.control-section.open h3,
+	#sub-accordion-section-citylogic-header-opacity.control-section.open h3,
+
+#sub-accordion-section-citylogic-social.control-section.open h3,
+#sub-accordion-section-citylogic-search.control-section.open h3,
+#sub-accordion-section-citylogic-slider.control-section.open h3,
+
+#sub-accordion-section-citylogic-blog.control-section.open h3,
+#sub-accordion-section-citylogic-404-page.control-section.open h3,
+#sub-accordion-section-citylogic-gutenberg.control-section.open h3,
+#sub-accordion-section-citylogic-media.control-section.open h3 {
+    background-color: #196290 !important;
+	color: #FFFFFF !important;
+}

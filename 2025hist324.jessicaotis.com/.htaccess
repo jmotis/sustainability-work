@@ -1,0 +1,67 @@
+# BEGIN Solid Security - Do not modify or remove this line
+# Solid Security Config Details: 2
+	# Ban Hosts - Security > Settings > Banned Users
+	SetEnvIF REMOTE_ADDR "^103\.94\.3\.122$" DenyAccess
+	SetEnvIF X-FORWARDED-FOR "^103\.94\.3\.122$" DenyAccess
+	SetEnvIF X-CLUSTER-CLIENT-IP "^103\.94\.3\.122$" DenyAccess
+
+	SetEnvIF REMOTE_ADDR "^97\.74\.91\.105$" DenyAccess
+	SetEnvIF X-FORWARDED-FOR "^97\.74\.91\.105$" DenyAccess
+	SetEnvIF X-CLUSTER-CLIENT-IP "^97\.74\.91\.105$" DenyAccess
+
+	SetEnvIF REMOTE_ADDR "^64\.23\.129\.165$" DenyAccess
+	SetEnvIF X-FORWARDED-FOR "^64\.23\.129\.165$" DenyAccess
+	SetEnvIF X-CLUSTER-CLIENT-IP "^64\.23\.129\.165$" DenyAccess
+
+	<IfModule mod_authz_core.c>
+		<RequireAll>
+			Require all granted
+			Require not env DenyAccess
+			Require not ip 103.94.3.122
+			Require not ip 97.74.91.105
+			Require not ip 64.23.129.165
+		</RequireAll>
+	</IfModule>
+	<IfModule !mod_authz_core.c>
+		Order allow,deny
+		Allow from all
+		Deny from env=DenyAccess
+		Deny from 103.94.3.122
+		Deny from 97.74.91.105
+		Deny from 64.23.129.165
+	</IfModule>
+
+	# Disable XML-RPC - Security > Settings > WordPress Tweaks > XML-RPC
+	<files xmlrpc.php>
+		<IfModule mod_authz_core.c>
+			Require all denied
+		</IfModule>
+		<IfModule !mod_authz_core.c>
+			Order allow,deny
+			Deny from all
+		</IfModule>
+	</files>
+# END Solid Security - Do not modify or remove this line
+
+# BEGIN WordPress
+# The directives (lines) between "BEGIN WordPress" and "END WordPress" are
+# dynamically generated, and should only be modified via WordPress filters.
+# Any changes to the directives between these markers will be overwritten.
+<IfModule mod_rewrite.c>
+RewriteEngine On
+RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
+RewriteBase /
+RewriteRule ^index\.php$ - [L]
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule . /index.php [L]
+</IfModule>
+
+# END WordPress
+
+# php -- BEGIN cPanel-generated handler, do not edit
+# Set the “ea-php82” package as the default “PHP” programming language.
+<IfModule mime_module>
+  AddHandler application/x-httpd-ea-php82 .php .php8 .phtml
+</IfModule>
+# php -- END cPanel-generated handler, do not edit

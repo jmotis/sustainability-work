@@ -1,0 +1,187 @@
+
+/* Trip archive page */
+.trip-content-area {
+	padding: 0;
+}
+
+.trip-content-area .row {
+	margin: 0;
+}
+
+.wp-travel-engine-archive-outer-wrap .wp-travel-engine-archive-wrap {
+	margin: 0 0 30px;
+}
+
+.wp-travel-engine-archive-wrap .title a {
+	font-weight: 500;
+	line-height: 1.1em;
+	font-size: 25px;
+}
+
+.wp-travel-engine-archive-outer-wrap .wp-travel-engine-archive-wrap .img-holder {
+	margin: 0;
+	overflow: hidden;
+}
+
+.post-type-archive-trip.zoom-rollover .wp-travel-engine-archive-outer-wrap .wp-travel-engine-archive-wrap .img-holder img {
+	-webkit-transition: all 0.3s;
+	max-width: 100.1%;
+}
+
+.post-type-archive-trip.zoom-rollover .wp-travel-engine-archive-outer-wrap .wp-travel-engine-archive-wrap .img-holder:hover img {
+	transform: scale(1.1);
+}
+
+.post-type-archive-trip.opacity-rollover .wp-travel-engine-archive-outer-wrap .wp-travel-engine-archive-wrap .img-holder {
+	background-color: #000000;
+}
+
+.post-type-archive-trip.opacity-rollover .wp-travel-engine-archive-outer-wrap .wp-travel-engine-archive-wrap .img-holder img {
+	-webkit-transition: all 0.3s;
+}
+
+.wp-travel-engine-archive-outer-wrap .wp-travel-engine-archive-wrap .text-holder .title {
+	padding: 17px 20px 0.2em 20px;
+	margin: 0;
+	border-left: 1px solid;
+	border-right: 1px solid;
+	border-color: #bebebe;
+}
+.wp-travel-engine-archive-outer-wrap .wp-travel-engine-archive-wrap .text-holder .title a:hover {
+	text-decoration: none;
+}
+
+.wp-travel-engine-archive-outer-wrap .wp-travel-engine-archive-wrap .text-holder .meta-info {
+	padding: 0 20px 17px 20px;
+	margin: 0;
+	border-left: 1px solid;
+	border-right: 1px solid;
+	border-color: #bebebe;
+}
+
+.wp-travel-engine-archive-outer-wrap .wp-travel-engine-archive-wrap .img-holder .price-holder {
+	color: #FFFFFF;
+}
+
+.wp-travel-engine-archive-outer-wrap .wp-travel-engine-archive-wrap .text-holder .btn-holder {
+	padding: 21px 29px;
+	padding: 0px 20px 17px 20px;
+	width: 100%;
+	border-left: 1px solid;
+	border-right: 1px solid;
+	border-bottom: 1px solid;
+	border-color: #bebebe;
+}
+
+.wp-travel-engine-archive-outer-wrap .wp-travel-engine-archive-wrap .text-holder .btn-holder a {
+	text-transform: uppercase;
+	line-height: 1;
+}
+
+/* Trip single page */
+.single-trip.left-sidebar #primary {
+	padding: 0 0 0 4.3%;
+	float: right;
+}
+
+article.trip-post .entry-title {
+	margin-bottom: .8em;
+}
+
+.single-trip #primary {
+	width: 77.8%;
+	padding: 0 4.3% 0 0;
+}
+
+.single-trip #secondary {
+	width: 22.2%;
+	padding: 0;	
+}
+
+.single-trip #wte_enquiry_contact_form {
+	background-color: #F4F4F4;
+	border-radius: 0;
+	margin-left: 0;
+	margin-right: 0;
+}
+
+.single-trip #wte_enquiry_contact_form input[type="text"],
+.single-trip #wte_enquiry_contact_form input[type="email"],
+.single-trip #wte_enquiry_contact_form input[type="url"],
+.single-trip #wte_enquiry_contact_form input[type="password"],
+.single-trip #wte_enquiry_contact_form input[type="search"],
+.single-trip #wte_enquiry_contact_form input[type="number"],
+.single-trip #wte_enquiry_contact_form input[type="tel"],
+.single-trip #wte_enquiry_contact_form input[type="range"],
+.single-trip #wte_enquiry_contact_form input[type="date"],
+.single-trip #wte_enquiry_contact_form input[type="month"],
+.single-trip #wte_enquiry_contact_form input[type="week"],
+.single-trip #wte_enquiry_contact_form input[type="time"],
+.single-trip #wte_enquiry_contact_form input[type="datetime"],
+.single-trip #wte_enquiry_contact_form input[type="datetime-local"],
+.single-trip #wte_enquiry_contact_form input[type="color"],
+.single-trip #wte_enquiry_contact_form textarea,
+.single-trip #wte_enquiry_contact_form select {
+    max-width: 100%;
+    padding: 3px 3px 3px 10px;
+    height: 41px;
+	border: 1px solid #bebebe;
+    border-radius: 0 !important;
+    font-size: 100%;
+}
+
+.single-trip #wte_enquiry_contact_form textarea {
+	height: 225px;
+	padding: 10px 3px 3px 10px;
+}
+
+.single-trip #wte_enquiry_contact_form input[type="text"]:focus,
+.single-trip #wte_enquiry_contact_form input[type="email"]:focus,
+.single-trip #wte_enquiry_contact_form input[type="url"]:focus,
+.single-trip #wte_enquiry_contact_form input[type="password"]:focus,
+.single-trip #wte_enquiry_contact_form input[type="search"]:focus,
+.single-trip #wte_enquiry_contact_form input[type="number"]:focus,
+.single-trip #wte_enquiry_contact_form input[type="tel"]:focus,
+.single-trip #wte_enquiry_contact_form input[type="range"]:focus,
+.single-trip #wte_enquiry_contact_form input[type="date"]:focus,
+.single-trip #wte_enquiry_contact_form input[type="month"]:focus,
+.single-trip #wte_enquiry_contact_form input[type="week"]:focus,
+.single-trip #wte_enquiry_contact_form input[type="time"]:focus,
+.single-trip #wte_enquiry_contact_form input[type="datetime"]:focus,
+.single-trip #wte_enquiry_contact_form input[type="datetime-local"]:focus,
+.single-trip #wte_enquiry_contact_form input[type="color"]:focus,
+.single-trip #wte_enquiry_contact_form textarea:focus,
+.single-trip #wte_enquiry_contact_form select:focus {
+	border-color: #8ea535;
+}
+
+.trip-content-area .widget-area .trip-price .price-holder form .check-availability,
+.trip-content-area .widget-area .trip-price .price-holder form .book-submit {
+	font-size: 15px;
+	padding: 21px 29px;
+	line-height: 1;
+	border-radius: 0;
+	min-width: 0;
+}
+
+.trip-content-area .widget-area .trip-price .price-holder {
+	border-radius: 0;
+	border-color: #bebebe;
+}
+
+.trip-content-area .widget-area .trip-price .price-holder .top-price-holder {
+	padding: 17px 20px 17px 20px;
+	border-color: #bebebe;
+}
+
+@media only screen and (max-width: 1024px) {
+	.trip-content-area {
+		max-width: 100%;
+	}
+}
+
+@media only screen and (max-width: 780px) {
+	.single-trip #primary {
+		padding: 0;
+	}
+}
