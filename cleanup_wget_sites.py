@@ -76,7 +76,7 @@ def build_duplicate_map(site_dir):
             if 'index.html?p=' not in canon_url:
                 continue
 
-            p_match = re.search(r'(index\.html\?p=\d+\.html)', canon_url)
+            p_match = re.search(r'(index\.html\?p=\d+(?:\.html)?)', canon_url)
             if not p_match:
                 continue
 
@@ -128,7 +128,7 @@ def build_canonical_map(site_dir):
             if 'index.html?p=' not in canon_url:
                 continue
 
-            p_match = re.search(r'(index\.html\?p=\d+\.html)', canon_url)
+            p_match = re.search(r'(index\.html\?p=\d+(?:\.html)?)', canon_url)
             if not p_match:
                 continue
 
@@ -166,8 +166,12 @@ def update_links_in_file(filepath, site_dir, link_replacements):
         rel_to_p_encoded = rel_to_p.replace('?', '%3F')
 
         def safe_replace(content, old, new):
-            """Replace references, preserving any #fragment and avoiding None."""
-            pattern = re.escape(old) + r'(#[^"\'>\s]*)?'
+            """Replace references, preserving any #fragment and avoiding None.
+
+            The (?!\\d) lookahead prevents ?p=12 from partially matching ?p=121
+            when the filename lacks a .html suffix terminator.
+            """
+            pattern = re.escape(old) + r'(?!\d)(#[^"\'>\s]*)?'
 
             def replacer(m):
                 fragment = m.group(1)
