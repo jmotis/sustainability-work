@@ -446,7 +446,107 @@ def process_site(site_dir):
     html_cleaned = clean_html_references(site_dir)
     print(f"Cleaned dangling references in {html_cleaned} HTML files.")
 
+    # Step 7: Strip ?ver= query strings from asset filenames and HTML refs
+    assets_renamed, refs_updated = strip_asset_query_strings(site_dir)
+    if assets_renamed or refs_updated:
+        print(f"Renamed {assets_renamed} asset files, updated refs in {refs_updated} HTML files.")
+
     return dup_map, updated_count, removed_dups, legacy_removed, html_cleaned
+
+
+def strip_asset_query_strings(site_dir):
+    """
+    Strip ?<query> suffixes from asset filenames (CSS, JS, fonts, etc.) saved
+    by wget with literal '?' in the filename. Over file://, browsers treat '?'
+    as a query string separator, so 'style.css?ver=1.2' fails to load. Even when
+    HTML references use %3F encoding, the mangled file extension (e.g. .js?ver=1.2
+    ends in .2) can confuse MIME type detection.
+
+    Renames files to strip everything from the first '?' onward, then updates
+    every href/src in HTML files to use the clean path.
+    """
+    import filecmp
+
+    renamed = 0
+    for root, dirs, files in os.walk(site_dir):
+        for f in list(files):
+            if '?' not in f:
+                continue
+            old_path = os.path.join(root, f)
+            new_name = f.split('?', 1)[0]
+            if not new_name:
+                continue
+            new_path = os.path.join(root, new_name)
+            if os.path.exists(new_path):
+                # Conflict: only resolve if identical content
+                if filecmp.cmp(old_path, new_path, shallow=False):
+                    os.remove(old_path)
+                    renamed += 1
+                else:
+                    print(f"  WARN: skipped rename (differs): {os.path.relpath(old_path, site_dir)}")
+                continue
+            os.rename(old_path, new_path)
+            renamed += 1
+
+    # Build set of existing files (relative to site_dir)
+    existing = set()
+    for root, dirs, files in os.walk(site_dir):
+        for f in files:
+            existing.add(os.path.relpath(os.path.join(root, f), site_dir))
+
+    refs_updated = 0
+    for hf in find_html_files(site_dir):
+        rel_hf = os.path.relpath(hf, site_dir)
+        hf_dir = os.path.dirname(rel_hf)
+        try:
+            with open(hf, 'r', encoding='utf-8', errors='replace') as fh:
+                content = fh.read()
+        except Exception:
+            continue
+        original = content
+
+        def fix_ref(m):
+            attr = m.group(1)
+            quote = m.group(2)
+            url = m.group(3)
+            if url.startswith(('http://', 'https://', 'mailto:', 'javascript:',
+                              'data:', '#', '//', 'file://')):
+                return m.group(0)
+            # Split off fragment
+            frag = ''
+            if '#' in url:
+                url_path, frag_only = url.split('#', 1)
+                frag = '#' + frag_only
+            else:
+                url_path = url
+            # Find first '?' or '%3F' (case-insensitive) in the URL path
+            qm = re.search(r'\?|%3[Ff]', url_path)
+            if not qm:
+                return m.group(0)
+            # If the ?-versioned file still exists on disk (rename skipped due to
+            # content conflict), keep the ref pointing to it - do not strip.
+            full_decoded = urllib.parse.unquote(url_path)
+            full_target = os.path.normpath(os.path.join(hf_dir, full_decoded))
+            if full_target in existing:
+                return m.group(0)
+            prefix = url_path[:qm.start()]
+            decoded_prefix = urllib.parse.unquote(prefix)
+            target_rel = os.path.normpath(os.path.join(hf_dir, decoded_prefix))
+            if target_rel in existing:
+                return f'{attr}={quote}{prefix}{frag}{quote}'
+            return m.group(0)
+
+        content = re.sub(
+            r'(href|src)=(["\'])([^"\']*)\2',
+            fix_ref, content
+        )
+
+        if content != original:
+            with open(hf, 'w', encoding='utf-8') as fh:
+                fh.write(content)
+            refs_updated += 1
+
+    return renamed, refs_updated
 
 
 def verify_links(site_dir):
